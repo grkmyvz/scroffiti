@@ -29,6 +29,7 @@ export default function Home() {
             aria-label="GitHub"
             title="GitHub"
             style={{ marginRight: '1rem' }}
+            target="_blank"
           >
             <svg
               aria-hidden="true"
