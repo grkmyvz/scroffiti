@@ -70,6 +70,7 @@ export default function BestScroffiti({
         args: [BigInt(Number(bestScroffiti?.bestScroffitiIndex))],
         value: BigInt(1000000000000000),
       });
+      showToast('Sending transaction...');
       const tx = await walletClient()?.writeContract(request);
       const txReceipt = await publicClient.waitForTransactionReceipt({
         hash: tx as Hex,

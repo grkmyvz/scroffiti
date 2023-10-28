@@ -9,8 +9,6 @@ export default function SendScroffiti({
   showToast: (message: string, duration?: number) => void;
 }) {
   const [scroffitiInput, setScroffitiInput] = useState<string>('');
-  const [toastVisible, setToastVisible] = useState<boolean>(false);
-  const [toastMessage, setToastMessage] = useState<string>('');
 
   function checkInput(input: string) {
     if (input === '') return false;
@@ -36,30 +34,23 @@ export default function SendScroffiti({
           functionName: 'write',
           args: [padToBytes32(stringToHex(scroffitiInput))],
         });
+        showToast('Sending transaction...');
         const tx = await walletClient()?.writeContract(request);
         const txReceipt = await publicClient.waitForTransactionReceipt({
           hash: tx as Hex,
         });
-        setToastMessage(
+        showToast(
           `${
             txReceipt.status
               ? 'Congratulations, your scroffiti has been published on the network.'
               : 'An error occurred, your scroffiti is not published on the network.'
           } Transaction hash: ${tx}`,
         );
-        setToastVisible(true);
-        setTimeout(() => {
-          setToastVisible(false);
-        }, 5000);
       } catch (error) {
         console.error(error);
       }
     } else {
-      setToastMessage('Invalid input');
-      setToastVisible(true);
-      setTimeout(() => {
-        setToastVisible(false);
-      }, 3000);
+      showToast('Invalid input');
     }
   }
   return (

@@ -1,7 +1,7 @@
 import { createPublicClient, http, createWalletClient, custom } from 'viem';
-import { scrollSepolia } from 'viem/chains';
+import { scroll } from 'viem/chains';
 
-export const activeChain = scrollSepolia;
+export const activeChain = scroll;
 
 export const publicClient = createPublicClient({
   chain: activeChain,

@@ -35,7 +35,7 @@ export default function ScroffitiList({
   }
 
   async function getScoffitis(count: number) {
-    for (let i = count - 1; i > (count > 5 ? count - 5 : 0); i--) {
+    for (let i = count - 1; i >= (count > 5 ? count - 5 : 0); i--) {
       await readScroffitis(i);
     }
   }
@@ -89,6 +89,7 @@ export default function ScroffitiList({
         args: [BigInt(index)],
         value: BigInt(1000000000000000),
       });
+      showToast('Sending transaction...');
       const tx = await walletClient()?.writeContract(request);
       const txReceipt = await publicClient.waitForTransactionReceipt({
         hash: tx as Hex,

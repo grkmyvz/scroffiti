@@ -5,7 +5,7 @@ import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react';
 import { WagmiConfig } from 'wagmi';
 import { activeChain } from '@/helpers/clients';
 
-const projectId = 'a25647947fb3a2e4343ad35a7680be76';
+const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_KEY as string;
 
 const metadata = {
   name: 'Web3Modal',
