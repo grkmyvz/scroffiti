@@ -1,0 +1,52 @@
+name: Test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+env:
+  FOUNDRY_PROFILE: ci
+
+jobs:
+  check:
+    strategy:
+      fail-fast: true
+
+    name: Foundry project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: $(cat ./app/.nvmrc)
+
+      - name: Run Forge build
+        run: |
+          forge --version
+          forge build --sizes
+
+      - name: Run Forge tests
+        run: |
+          forge test -vvv
+
+      - name: Install App Dependencies
+        run: |
+          cd app
+          npm install
+
+      - name: ESLint check for app
+        run: yarn lint
+
+      - name: Prettier check for app
+        run: yarn prettier . --check
