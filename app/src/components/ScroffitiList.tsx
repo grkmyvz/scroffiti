@@ -89,8 +89,8 @@ export default function ScroffitiList({
         args: [BigInt(index)],
         value: BigInt(1000000000000000),
       });
-      showToast('Sending transaction...');
       const tx = await walletClient()?.writeContract(request);
+      showToast('Transaction sent, waiting for confirmation...');
       const txReceipt = await publicClient.waitForTransactionReceipt({
         hash: tx as Hex,
       });

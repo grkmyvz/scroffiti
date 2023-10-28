@@ -1,7 +1,7 @@
 import { publicClient, walletClient } from '@/helpers/clients';
 import { contractABI, contractAddress } from '@/helpers/contractInfo';
 import { createMulticall } from '@/helpers/createMulticall';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Hex, hexToString } from 'viem';
 
 type Scroffiti = {
@@ -60,6 +60,7 @@ export default function ReadScroffiti({
         value: BigInt(1000000000000000),
       });
       const tx = await walletClient()?.writeContract(request);
+      showToast('Transaction sent, waiting for confirmation...');
       const txReceipt = await publicClient.waitForTransactionReceipt({
         hash: tx as Hex,
       });

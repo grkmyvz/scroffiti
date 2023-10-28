@@ -70,8 +70,8 @@ export default function BestScroffiti({
         args: [BigInt(Number(bestScroffiti?.bestScroffitiIndex))],
         value: BigInt(1000000000000000),
       });
-      showToast('Sending transaction...');
       const tx = await walletClient()?.writeContract(request);
+      showToast('Transaction sent. Waiting for confirmation...');
       const txReceipt = await publicClient.waitForTransactionReceipt({
         hash: tx as Hex,
       });
@@ -92,8 +92,8 @@ export default function BestScroffiti({
   }, []);
 
   return (
-    <div className="w100">
-      <h2 className="p1">Best Scroffiti</h2>
+    <div className="w100 p1">
+      <h2>Best Scroffiti</h2>
       <h3 className="p1">{bestScroffiti?.bestScroffitiDecoded.toLowerCase()}</h3>
       <div className="horizontal-stack">
         <p className="bg-gray-700 w100 m1 p1 text-center">

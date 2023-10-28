@@ -34,8 +34,8 @@ export default function SendScroffiti({
           functionName: 'write',
           args: [padToBytes32(stringToHex(scroffitiInput))],
         });
-        showToast('Sending transaction...');
         const tx = await walletClient()?.writeContract(request);
+        showToast('Transaction sent, waiting for confirmation...');
         const txReceipt = await publicClient.waitForTransactionReceipt({
           hash: tx as Hex,
         });
@@ -53,13 +53,14 @@ export default function SendScroffiti({
       showToast('Invalid input');
     }
   }
+
   return (
-    <div className="w100">
+    <div className="w100 p1">
       <h2>Send Scroffiti</h2>
       <input
         className="w80"
         type="text"
-        placeholder="Enter your message (Max 32 characters)"
+        placeholder="Enter your scroffiti (Max 32 characters)"
         onChange={(e) => setScroffitiInput(e.target.value)}
       />
       <button className="w20" onClick={writeScroffiti}>

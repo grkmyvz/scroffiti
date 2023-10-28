@@ -58,13 +58,13 @@ h3 {
   text-align: center;
   text-shadow:
     0 0 1px #fff,
-    0 0 2px #fff,
-    0 0 3px #fff,
-    0 0 4px #ff00de,
-    0 0 5px #ff00de,
-    0 0 10px #ff00de,
-    0 0 15px #ff00de,
-    0 0 20px #ff00de;
+    0 0 1px #fff,
+    0 0 1px #fff,
+    0 0 4px #ff684b,
+    0 0 5px #ff684b,
+    0 0 10px #ff684b,
+    0 0 15px #ff684b,
+    0 0 20px #ff684b;
 }
 
 h4 {
