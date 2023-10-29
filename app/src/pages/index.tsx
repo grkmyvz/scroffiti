@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { Inter } from 'next/font/google';
+import { useWeb3ModalState } from '@web3modal/wagmi/react';
 
 import BestScroffiti from '@/components/BestScroffiti';
 import SendScroffiti from '@/components/SendScroffiti';
@@ -11,6 +12,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
   const { toastVisible, toastMessage, showToast } = useToast();
+  const { selectedNetworkId } = useWeb3ModalState();
+
   return (
     <>
       <Head>
@@ -22,7 +25,6 @@ export default function Home() {
       <main className={inter.className}>
         <div className="w100 horizontal-stack">
           <h1>Scroffiti</h1>
-
           <w3m-button />
           <a
             href="https://github.com/grkmyvz/scroffiti"
@@ -47,6 +49,17 @@ export default function Home() {
           </a>
         </div>
         <hr />
+        {selectedNetworkId !== 534352 && (
+          <>
+            <div className="w100 bg-warning p1 text-center">
+              <p>
+                <strong>Warning: </strong> Please select the <u>Scroll</u> network, which is a valid
+                network.
+              </p>
+            </div>
+            <hr />
+          </>
+        )}
         <BestScroffiti showToast={showToast} />
         <hr />
         <SendScroffiti showToast={showToast} />

@@ -114,6 +114,10 @@ button:hover {
   background-color: rgba(184, 184, 184, 0.1);
 }
 
+.bg-warning {
+  background-color: rgba(255, 170, 0, 0.1);
+}
+
 .horizontal-stack {
   display: flex;
   flex-direction: row;

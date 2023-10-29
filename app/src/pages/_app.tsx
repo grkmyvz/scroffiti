@@ -8,9 +8,9 @@ import { activeChain } from '@/helpers/clients';
 const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_KEY as string;
 
 const metadata = {
-  name: 'Web3Modal',
-  description: 'Web3Modal Example',
-  url: 'https://web3modal.com',
+  name: 'Scroffiti',
+  description: 'Scroffiti app',
+  url: 'https://scroffiti.vercel.app/',
   icons: ['https://avatars.githubusercontent.com/u/37784886'],
 };
 
