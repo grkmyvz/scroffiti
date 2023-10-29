@@ -136,8 +136,8 @@ export default function ScroffitiList({
           </div>
         ))}
       </div>
-      <div className="w100">
-        <button className="m1 p1 w100" onClick={loadMore}>
+      <div className="w100 p1">
+        <button className="w100 p1" onClick={loadMore}>
           Load More
         </button>
       </div>
